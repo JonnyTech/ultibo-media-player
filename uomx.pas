@@ -1,6 +1,6 @@
 unit uOMX;
 
-{$mode delphi}{$H+}
+{$mode objfpc}{$H+}
 (*
  * Copyright (c) 2008 The Khronos Group Inc.
  *

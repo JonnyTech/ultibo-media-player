@@ -4,15 +4,15 @@ Extract [Ultibo Demo](https://github.com/ultibohub/Demo/releases/) to FAT32 form
 Copy compiled files to the the above folder \
 Based on Gary Wood's fantastic [Ultibo](https://ultibo.org/) project \
 Install development environment with [fpcupdeluxe](https://github.com/LongDirtyAnimAlf/fpcupdeluxe) \
-Powered by the excellent [Free Pascal](https://freepascal.org)  Compiler
+Powered by the excellent [Free Pascal](https://freepascal.org) Compiler
 
 Split video and audio:
 
 ```
 ./ffmpeg -i clip.mp4 -c:v libx264 -an -movflags +faststart video.h264
-./ffmpeg -i clip.mp4 -acodec pcm_s16le -ac 2 audio.wav
+./ffmpeg -i clip.mp4 -c:a pcm_s16le -ac 2 audio.wav
 
-./ffmpeg -i clip.mp4 -map 0:v:0 -c:v libx264 video.h264 -map 0:a:0 -acodec pcm_s16le -ac 2 audio.wav
+./ffmpeg -i clip.mp4 -map 0:v:0 -c:v libx264 video.h264 -map 0:a:0 -c:a pcm_s16le -ac 2 audio.wav
 ```
 
 Additional notes:
