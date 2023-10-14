@@ -5,18 +5,17 @@ program playertest;
 {$notes off}
 
 uses
-  {$IFDEF RPI}
+{$if defined(RPI)}
   RaspberryPi,
-  {$ENDIF}
-  {$IFDEF RPI2}
+{$elseif defined(RPI2)}
   RaspberryPi2,
-  {$ENDIF}
-  {$IFDEF RPI3}
+{$elseif defined(RPI3)}
   RaspberryPi3,
-  {$ENDIF}
-  {$IFDEF RPI4}
+{$elseif defined(RPI4)}
   RaspberryPi4,
-  {$ENDIF}
+{$elseif defined(QEMUVPB)}
+  QEMUVersatilePB,
+{$endif}
   GlobalConfig,
   GlobalConst,
   GlobalTypes,
@@ -526,9 +525,11 @@ begin
   WindowHandle := ConsoleWindowCreate(ConsoleDeviceGetDefault,CONSOLE_POSITION_FULLSCREEN,True);
   ConsoleWindowWriteLn(WindowHandle,'Audio / Video Test');
   ConsoleWindowWriteLn(WindowHandle,'');
+{$if not defined(QEMUVPB)}
   if not DirectoryExists('C:\') then
     while not DirectoryExists('C:\') do
       Sleep(100);
+{$endif}
   BCMHostInit;
   AudioIndex := 0;
   VideoIndex := 0;
