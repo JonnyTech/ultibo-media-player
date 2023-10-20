@@ -96,7 +96,7 @@ begin
   FillChar(Message, SizeOf(TMessage), 0);
   while not Terminated do
   begin
-    PlayFile('bltn', FFilename, FRepeat);
+    PlayFile('hdmi'{'bltn'}, FFilename, FRepeat); // todo: audio output selection
     if not(FRepeat) and (not Assigned(FOnNextFile) or not FOnNextFile(FFilename)) then
       Break;
     OpenFile(FFilename);

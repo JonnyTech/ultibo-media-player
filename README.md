@@ -50,6 +50,14 @@ max_framebuffers=2
 gpu_mem=128
 display_hdmi_rotate=0
 avoid_warnings=1
+# program_usb_boot_mode=1 # untested
+```
+
+Audio output from `fpcsrc/packages/cocoaint/src/coreaudio/AudioHardwareBase.inc`:
+```
+const
+  kAudioDeviceTransportTypeBuiltIn = 'bltn';
+  kAudioDeviceTransportTypeHDMI = 'hdmi';
 ```
 
 Details at https://www.raspberrypi.com/documentation/computers/config_txt.html
