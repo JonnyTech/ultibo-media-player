@@ -9,10 +9,10 @@ Powered by the excellent [Free Pascal](https://freepascal.org) Compiler
 Split video and audio:
 
 ```
-./ffmpeg -i clip.mp4 -c:v libx264 -an -movflags +faststart video.h264
+./ffmpeg -i clip.mp4 -c:v libx264 -vf format=yuv420p,scale=w=1920:h=1080:force_original_aspect_ratio=1 -movflags +faststart -an video.h264
 ./ffmpeg -i clip.mp4 -c:a pcm_s16le -ac 2 audio.wav
 
-./ffmpeg -i clip.mp4 -map 0:v:0 -c:v libx264 video.h264 -map 0:a:0 -c:a pcm_s16le -ac 2 audio.wav
+./ffmpeg -i clip.mp4 -map 0:v:0 -c:v libx264 -vf format=yuv420p,scale=w=1920:h=1080:force_original_aspect_ratio=1 -movflags +faststart video.h264 -map 0:a:0 -c:a pcm_s16le -ac 2 audio.wav
 ```
 
 Additional notes:
